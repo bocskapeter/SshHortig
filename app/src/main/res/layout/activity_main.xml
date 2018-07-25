@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/ServerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Server"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/ServerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Server"
+        android:inputType="textWebEmailAddress"
+        android:nextFocusDown="@id/UserEditText"
+        android:text="Enter server"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/UserTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/UserEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="User"
+        android:inputType="textPersonName"
+        android:nextFocusDown="@id/PasswordEditText"
+        android:text="Enter user"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/PasswordTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/PasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter password"
+        android:inputType="textPassword"
+        android:nextFocusDown="@id/SshEditText"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/SshTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SSH Command"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/SshEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="SSH Command"
+        android:inputType="textShortMessage|textLongMessage"
+        android:nextFocusDown="@id/SendButton"
+        android:text="Enter SSH Command"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/SendButton"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:text="Send"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/StatusLabelTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/StatusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ready"
+        android:textSize="12sp" />
+
+</LinearLayout>
