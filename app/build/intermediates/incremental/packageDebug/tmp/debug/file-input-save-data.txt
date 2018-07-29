@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jul 24 22:34:00 CEST 2018
+#Sun Jul 29 08:50:35 CEST 2018
 1.base=/home/bocskapeter/work/prog/SshHortig/app/build/intermediates/transforms/dexMerger/debug/13
 2.path=classes.dex
 0.baseType=DIRECTORY

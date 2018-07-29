@@ -1,6 +1,8 @@
 package eu.bopet.sshhortig;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
@@ -34,17 +36,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button send;
     private View mLayout;
 
-    String server;
-    String user;
-    String password;
-    String sshCommand;
-    JSch jsch;
-    Session session;
-    String response;
+    private SharedPreferences mPrefs;
+
+    private String server;
+    private String user;
+    private String password;
+    private String sshCommand;
+    private JSch jsch;
+    private Session session;
+    private String response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         mLayout = findViewById(R.id.main_layout);
@@ -57,8 +62,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         send = findViewById(R.id.SendButton);
 
-        serverEditText.getText().clear();
-        userEditText.getText().clear();
+        mPrefs = getPreferences(Context.MODE_PRIVATE);
+        server = mPrefs.getString("server","");
+        user = mPrefs.getString("user","");
+
+        serverEditText.setText(server);
+        userEditText.setText(user);
+
         passwordEditText.getText().clear();
         sshEditText.getText().clear();
 
@@ -150,5 +160,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return e.getLocalizedMessage();
             }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor ed = mPrefs.edit();
+        ed.putString("server",server);
+        ed.putString("user",user);
+        ed.commit();
     }
 }

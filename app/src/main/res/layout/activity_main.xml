@@ -1,60 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/ServerTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="Server"
         android:textSize="10sp" />
 
     <EditText
         android:id="@+id/ServerEditText"
-        android:layout_width="match_parent"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ServerTextView"
         android:ems="10"
         android:hint="Server"
         android:inputType="textWebEmailAddress"
         android:nextFocusDown="@id/UserEditText"
-        android:text="Enter server"
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/UserTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/ServerEditText"
         android:text="User"
         android:textSize="10sp" />
 
     <EditText
         android:id="@+id/UserEditText"
-        android:layout_width="match_parent"
+        android:layout_width="191dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ServerTextView"
+        android:layout_toEndOf="@+id/ServerEditText"
         android:ems="10"
         android:hint="User"
         android:inputType="textPersonName"
         android:nextFocusDown="@id/PasswordEditText"
-        android:text="Enter user"
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/PasswordTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ServerEditText"
         android:text="Password"
         android:textSize="10sp" />
 
     <EditText
         android:id="@+id/PasswordEditText"
-        android:layout_width="match_parent"
+        android:layout_width="87dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/PasswordTextView"
         android:ems="10"
         android:hint="Enter password"
         android:inputType="textPassword"
@@ -63,15 +72,19 @@
 
     <TextView
         android:id="@+id/SshTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ServerEditText"
+        android:layout_toEndOf="@+id/PasswordEditText"
         android:text="SSH Command"
         android:textSize="10sp" />
 
     <EditText
         android:id="@+id/SshEditText"
-        android:layout_width="match_parent"
+        android:layout_width="277dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/PasswordTextView"
+        android:layout_toEndOf="@+id/PasswordEditText"
         android:ems="10"
         android:hint="SSH Command"
         android:inputType="textShortMessage|textLongMessage"
@@ -81,23 +94,29 @@
 
     <Button
         android:id="@+id/SendButton"
-        android:layout_width="match_parent"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/PasswordEditText"
         android:text="Send"
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/StatusLabelTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/PasswordEditText"
+        android:layout_toEndOf="@+id/SendButton"
         android:text="Status"
         android:textSize="10sp" />
 
     <TextView
         android:id="@+id/StatusTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/StatusLabelTextView"
+        android:layout_toEndOf="@+id/SendButton"
         android:text="Ready"
         android:textSize="12sp" />
 
-</LinearLayout>
+</RelativeLayout>
