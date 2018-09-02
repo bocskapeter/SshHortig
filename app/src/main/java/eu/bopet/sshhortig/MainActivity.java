@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText passwordEditText;
     private EditText sshEditText;
     private TextView statusText;
-    private Button send;
     private View mLayout;
 
     private SharedPreferences mPrefs;
@@ -42,9 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String user;
     private String password;
     private String sshCommand;
-    private JSch jsch;
-    private Session session;
-    private String response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +53,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         serverEditText = findViewById(R.id.ServerEditText);
         userEditText = findViewById(R.id.UserEditText);
         passwordEditText = findViewById(R.id.PasswordEditText);
-        sshEditText =  findViewById(R.id.SshEditText);
+        sshEditText = findViewById(R.id.SshEditText);
         statusText = findViewById(R.id.StatusTextView);
 
-        send = findViewById(R.id.SendButton);
+        Button send = findViewById(R.id.SendButton);
 
         mPrefs = getPreferences(Context.MODE_PRIVATE);
-        server = mPrefs.getString("server","");
-        user = mPrefs.getString("user","");
+        server = mPrefs.getString("server", "");
+        user = mPrefs.getString("user", "");
 
         serverEditText.setText(server);
         userEditText.setText(user);
@@ -77,12 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        statusText.setText("Connecting");
+        statusText.setText(R.string.connecting);
         server = serverEditText.getText().toString();
         user = userEditText.getText().toString();
         password = passwordEditText.getText().toString();
         sshCommand = sshEditText.getText().toString();
-        jsch = new JSch();
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -93,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // Request the permission
                         ActivityCompat.requestPermissions(MainActivity.this,
                                 new String[]{Manifest.permission.INTERNET}, 1);
                     }
@@ -103,22 +98,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             try {
                 String res = new Response().execute("", "", "").get();
                 statusText.setText(res);
-            } catch (InterruptedException e) {
-                statusText.setText(e.getLocalizedMessage());
-                e.printStackTrace();
-            } catch (ExecutionException e) {
+            } catch (InterruptedException | ExecutionException e) {
                 statusText.setText(e.getLocalizedMessage());
                 e.printStackTrace();
             }
         }
     }
 
-    private class Response extends AsyncTask<String,Void,String>{
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor ed = mPrefs.edit();
+        ed.putString("server", server);
+        ed.putString("user", user);
+        ed.apply();
+    }
+
+    private class Response extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
             try {
-                session = jsch.getSession(user, server);
+                JSch jsch = new JSch();
+                Session session = jsch.getSession(user, server);
                 session.setPassword(password);
                 Properties prop = new Properties();
                 prop.put("StrictHostKeyChecking", "no");
@@ -126,20 +128,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 session.connect();
 
-                statusText.setText("Connected");
+                statusText.setText(R.string.connected);
 
-                Channel channel=session.openChannel("exec");
-                ((ChannelExec)channel).setCommand(sshCommand);
+                Channel channel = session.openChannel("exec");
+                ((ChannelExec) channel).setCommand(sshCommand);
                 channel.setInputStream(null);
-                ((ChannelExec)channel).setErrStream(System.err);
+                ((ChannelExec) channel).setErrStream(System.err);
 
-                response = "";
+                String response = "";
                 try {
-                    InputStream in=channel.getInputStream();
+                    InputStream in = channel.getInputStream();
                     channel.connect();
 
-                    byte[] tmp=new byte[1024];
-                    while(true) {
+                    byte[] tmp = new byte[1024];
+                    while (true) {
                         while (in.available() > 0) {
                             int i = in.read(tmp, 0, 1024);
                             if (i < 0) break;
@@ -160,14 +162,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return e.getLocalizedMessage();
             }
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SharedPreferences.Editor ed = mPrefs.edit();
-        ed.putString("server",server);
-        ed.putString("user",user);
-        ed.commit();
     }
 }

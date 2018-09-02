@@ -4,7 +4,7 @@
             "outputFile": "/home/bocskapeter/work/prog/SshHortig/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/082fddf182edf0c4ec50a1bdd83b7042/res/values-v24/values-v24.xml",
+                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/0fde0bd593957de73de3754152781d71/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/198dcc207528e27a1456cd520102f73d/res/values-v24/values-v24.xml",
+                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/40f71e9c303b8d42fffec95a2e2a1e4d/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

@@ -1,4 +1,4 @@
-#Sun Jul 29 08:50:34 CEST 2018
-base.0=/home/bocskapeter/work/prog/SshHortig/app/build/intermediates/transforms/dexMerger/debug/0
+#Sun Sep 02 11:02:30 CEST 2018
+base.0=/home/bocskapeter/work/prog/SshHortig/app/build/intermediates/transforms/dexMerger/debug/1
 path.0=classes.dex
 renamed.0=classes.dex

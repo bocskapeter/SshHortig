@@ -4,7 +4,17 @@
             "outputFile": "/home/bocskapeter/work/prog/SshHortig/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/b9bc6de6624e5628e4274f27a315dc0a/res/values-land/values-land.xml",
+                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/0fde0bd593957de73de3754152781d71/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
+                    }
+                },
+                {
+                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/f36200c7529ba6161f4355352a040185/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "9",
                         "endColumns": "12",
                         "endOffsets": "505"
-                    }
-                },
-                {
-                    "source": "/home/bocskapeter/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/082fddf182edf0c4ec50a1bdd83b7042/res/values-land/values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
                     }
                 }
             ]

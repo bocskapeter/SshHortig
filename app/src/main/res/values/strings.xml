@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SshHortig</string>
+    <string name="connecting">Connecting</string>
+    <string name="connected">Connected</string>
 </resources>
